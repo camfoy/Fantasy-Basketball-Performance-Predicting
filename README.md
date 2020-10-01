@@ -1,4 +1,4 @@
-# Fantasy-Basketball-Performance-Predicting
+#Fantacy-League-Basketball-Performance-Pridiction
 
 This is a work in progress.
 
