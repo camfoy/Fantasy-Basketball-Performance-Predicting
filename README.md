@@ -1,4 +1,6 @@
-# Fantasy-Basketball-Performance-Predicting (Work In Progress)
+# Fantasy-Basketball-Performance-Predicting
+
+This is a work in progress.
 
 ## Summary
 
