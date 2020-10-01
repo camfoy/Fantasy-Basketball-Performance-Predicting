@@ -2,22 +2,21 @@ import pandas as pd
 import datetime
 from client import players_season_totals, players_advanced_season_totals, players_per_game_stats
 
+
 def get_merged_data(year_list):
 
     totals_df = get_players_season_totals(year_list=year_list)
     advanced_df = get_players_advanced_season_totals(year_list=year_list)
     per_game_df = get_players_per_game_stats(year_list=year_list)
-    interim_df = per_game_df.merge(totals_df[['name', 'position', 'age', 'team', 'games_played', 'games_started', 'fantasy_points']], how='inner')
-    master_df = interim_df.merge(advanced_df.drop(columns=['minutes_played']), how='inner')
-    # first_year = year_list[0]
-    # last_year = year_list[-1]
-
-    # return master_df.to_csv(f"C:\\Users\\CA015FO\\basketball\\data\\basketball_reference_data_{first_year}_{last_year}", index=False)
+    interim_df = per_game_df.merge(totals_df, how='inner')
+    master_df = interim_df.merge(advanced_df, how='inner')
+    
     return master_df
 
 def get_players_season_totals(year_list):
 
     df = pd.DataFrame()
+
     for i in year_list:
         data = players_season_totals(season_end_year=i)
         data = pd.DataFrame(data)
@@ -43,6 +42,7 @@ def get_players_season_totals(year_list):
 def get_players_advanced_season_totals(year_list):
 
     df = pd.DataFrame()
+
     for i in year_list:
         data = players_advanced_season_totals(season_end_year=i)
         data = pd.DataFrame(data)
@@ -54,6 +54,7 @@ def get_players_advanced_season_totals(year_list):
 def get_players_per_game_stats(year_list):
 
     df = pd.DataFrame()
+
     for i in year_list:
         data = players_per_game_stats(season_end_year=i)
         data = pd.DataFrame(data)
